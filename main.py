@@ -8,10 +8,14 @@ class Autofish:
 		self.rod = Rods.select()
 		self.count = input("Введіть скільки зарів ловити, після вводу у вас буде 5 секунд.\nКількість: ")		
 		self.i = 0
-		sleep(5)
-		while self.i!=int(self.count):
-			if pg.locateOnScreen(self.rod) is None:
-				Autofish.catch()
+		if self.count:
+			sleep(5)
+			while self.i != int(self.count):
+				if pg.locateOnScreen(self.rod) is None:
+					self.catch()
+		else:
+			self.search()
+
 	@classmethod
 	def catch(self):
 		print(str(self.i+1)+".", "catch")
